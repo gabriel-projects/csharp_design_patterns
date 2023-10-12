@@ -8,6 +8,6 @@ namespace DesignPatterns.PatternsCriational.FactoryMethod.Interfaces
 {
     public interface IService
     {
-        void ExecuteServiceBilling()
+        void ExecuteServiceBilling();
     }
 }

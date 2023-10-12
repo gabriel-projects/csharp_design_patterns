@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="PatternsCriational\FactoryMethod\Enums\" />
-    <Folder Include="PatternsCriational\FactoryMethod\ServicesProducts\" />
   </ItemGroup>
 
 </Project>
