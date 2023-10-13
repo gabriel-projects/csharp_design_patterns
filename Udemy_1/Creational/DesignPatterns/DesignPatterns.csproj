@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="PatternsCriational\AbstractFactory\Products\Interfaces\" />
+    <Folder Include="PatternsCriational\AbstractFactory\Products\Products\" />
+  </ItemGroup>
+
 </Project>
