@@ -1,4 +1,4 @@
-﻿using DesignPatterns.PatternsCriational.FactoryMethod;
+﻿using DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1;
 
 namespace DesignPatterns
 {

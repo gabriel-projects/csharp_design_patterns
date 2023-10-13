@@ -1,5 +1,4 @@
-﻿
-namespace DesignPatterns.PatternsCriational.FactoryMethod.Enums
+﻿namespace DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1.Enums
 {
     public enum EServiceType
     {

@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="PatternsCriational\AbstractFactory\Products\Interfaces\" />
-    <Folder Include="PatternsCriational\AbstractFactory\Products\Products\" />
+    <Folder Include="PatternsCriational\FactoryMethod\Exemplo_2\" />
   </ItemGroup>
 
 </Project>

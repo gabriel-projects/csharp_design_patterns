@@ -1,6 +1,6 @@
-﻿using DesignPatterns.PatternsCriational.FactoryMethod.Interfaces;
+﻿using DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1.Interfaces;
 
-namespace DesignPatterns.PatternsCriational.FactoryMethod.ServicesProducts
+namespace DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1.ServicesProducts
 {
     public class TraditionalService : IService
     {

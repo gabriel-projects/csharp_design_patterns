@@ -1,11 +1,11 @@
-﻿using DesignPatterns.PatternsCriational.FactoryMethod.Enums;
+﻿using DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.PatternsCriational.FactoryMethod
+namespace DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1
 {
     public class Client
     {
