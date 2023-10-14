@@ -1,5 +1,6 @@
 ﻿using DesignPatterns.PatternsCriational.AbstractFactory.Exemplo_1;
 using DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1;
+using DesignPatterns.PatternsCriational.SingletonPattern;
 
 namespace DesignPatterns
 {
@@ -13,10 +14,17 @@ namespace DesignPatterns
         //}
 
         //Abstract Factory
+        //static void Main(string[] args)
+        //{
+        //    var client = new AbstractFactoryClient();
+        //    client.Execute();
+        //}
+
+        //singleton
         static void Main(string[] args)
         {
-            var client = new AbstractFactoryClient();
-            client.Execute();
+            var client = new SingletonClient();
+            client.ConsumeDb();
         }
     }
 }
