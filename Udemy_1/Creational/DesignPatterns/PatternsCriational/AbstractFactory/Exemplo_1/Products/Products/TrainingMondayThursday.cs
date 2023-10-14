@@ -9,6 +9,11 @@ namespace DesignPatterns.PatternsCriational.AbstractFactory.Exemplo_1.Products.P
 {
     public class TrainingMondayThursday : ITraining
     {
+        public TrainingMondayThursday()
+        {
+            GetTraining();
+        }
+
         public void GetTraining()
         {
             Console.WriteLine("Treino de segunda e Quinta");
