@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1
 {
-    public class Client
+    public class FactoryMethodClient
     {
         public void ExecuteCreator()
         {

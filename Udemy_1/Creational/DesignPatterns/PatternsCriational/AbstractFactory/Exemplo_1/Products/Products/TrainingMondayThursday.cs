@@ -11,7 +11,6 @@ namespace DesignPatterns.PatternsCriational.AbstractFactory.Exemplo_1.Products.P
     {
         public TrainingMondayThursday()
         {
-            GetTraining();
         }
 
         public void GetTraining()
