@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.PatternsCriational.AbstractFactory.Exemplo_1;
 using DesignPatterns.PatternsCriational.Builder.Exemplo_1;
 using DesignPatterns.PatternsCriational.FactoryMethod.Exemplo_1;
+using DesignPatterns.PatternsCriational.Propotype.Exemplo_1;
 using DesignPatterns.PatternsCriational.SingletonPattern;
 
 namespace DesignPatterns
@@ -29,10 +30,17 @@ namespace DesignPatterns
         //}
 
         //Builder
+        //static void Main(string[] args)
+        //{
+        //    var client = new BuilderClient();
+        //    client.ConsumirDados();
+        //}
+
+        //prototype
         static void Main(string[] args)
         {
-            var client = new BuilderClient();
-            client.ConsumirDados();
+            Cliente cliente = new Cliente();
+            cliente.Consumir();
         }
     }
 }
