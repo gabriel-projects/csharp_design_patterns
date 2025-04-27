@@ -140,25 +140,49 @@ namespace DesignPatternsV1
         private static void DemonstrateAdapter()
         {
             Console.WriteLine("\n1. Adapter Pattern:");
-            // Add your Adapter demonstration here
+            Adaptee adaptee = new Adaptee();
+            ITarget target = new Adapter(adaptee);
+            Console.WriteLine(target.GetRequest());
         }
 
         private static void DemonstrateBridge()
         {
             Console.WriteLine("\n2. Bridge Pattern:");
-            // Add your Bridge demonstration here
+            IImplementation implementation = new ConcreteImplementationA();
+            Abstraction abstraction = new Abstraction(implementation);
+            Console.WriteLine(abstraction.Operation());
+
+            Console.WriteLine("\nExtended abstraction:");
+            abstraction = new ExtendedAbstraction(implementation);
+            Console.WriteLine(abstraction.Operation());
         }
 
         private static void DemonstrateComposite()
         {
             Console.WriteLine("\n3. Composite Pattern:");
-            // Add your Composite demonstration here
+            Structural.Composite.IComponent leaf = new Leaf();
+            Console.WriteLine($"Leaf: {leaf.Operation()}");
+
+            Composite tree = new Composite();
+            Composite branch1 = new Composite();
+            branch1.Add(new Leaf());
+            branch1.Add(new Leaf());
+            Composite branch2 = new Composite();
+            branch2.Add(new Leaf());
+            tree.Add(branch1);
+            tree.Add(branch2);
+            Console.WriteLine($"Tree: {tree.Operation()}");
         }
 
         private static void DemonstrateDecorator()
         {
             Console.WriteLine("\n4. Decorator Pattern:");
-            // Add your Decorator demonstration here
+            DesignPatternsV1.Structural.Decorator.IComponent simple = new ConcreteComponent();
+            Console.WriteLine($"Simple component: {simple.Operation()}");
+
+            DesignPatternsV1.Structural.Decorator.IComponent decorator1 = new ConcreteDecoratorA(simple);
+            DesignPatternsV1.Structural.Decorator.IComponent decorator2 = new ConcreteDecoratorB(decorator1);
+            Console.WriteLine($"Decorated component: {decorator2.Operation()}");
         }
 
         private static void DemonstrateFacade()
