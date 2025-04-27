@@ -262,49 +262,143 @@ namespace DesignPatternsV1
         private static void DemonstrateIterator()
         {
             Console.WriteLine("\n3. Iterator Pattern:");
-            // Add your Iterator demonstration here
+            var aggregate = new ConcreteAggregate();
+            aggregate.Add("Item 1");
+            aggregate.Add("Item 2");
+            aggregate.Add("Item 3");
+
+            var iterator = aggregate.CreateIterator();
+            Console.WriteLine("Iterating over collection:");
+            Console.WriteLine(iterator.Current());
+            while (iterator.MoveNext())
+            {
+                Console.WriteLine(iterator.Current());
+            }
         }
 
         private static void DemonstrateMediator()
         {
             Console.WriteLine("\n4. Mediator Pattern:");
-            // Add your Mediator demonstration here
+            Component1 component1 = new Component1();
+            Component2 component2 = new Component2();
+            new ConcreteMediator(component1, component2);
+
+            Console.WriteLine("Client triggers operation A.");
+            component1.DoA();
+
+            Console.WriteLine("\nClient triggers operation D.");
+            component2.DoD();
         }
 
         private static void DemonstrateMemento()
         {
             Console.WriteLine("\n5. Memento Pattern:");
-            // Add your Memento demonstration here
+            Originator originator = new Originator("Super-duper-super-puper-super.");
+            Caretaker caretaker = new Caretaker(originator);
+
+            caretaker.Backup();
+            originator.DoSomething();
+
+            caretaker.Backup();
+            originator.DoSomething();
+
+            caretaker.Backup();
+            originator.DoSomething();
+
+            Console.WriteLine("\nClient: Now, let's rollback!\n");
+            caretaker.Undo();
+
+            Console.WriteLine("\nClient: Once more!\n");
+            caretaker.Undo();
         }
 
         private static void DemonstrateObserver()
         {
             Console.WriteLine("\n6. Observer Pattern:");
-            // Add your Observer demonstration here
+            ConcreteSubject subject = new ConcreteSubject();
+
+            ConcreteObserver observer1 = new ConcreteObserver("Observer 1");
+            ConcreteObserver observer2 = new ConcreteObserver("Observer 2");
+            ConcreteObserver observer3 = new ConcreteObserver("Observer 3");
+
+            subject.Attach(observer1);
+            subject.Attach(observer2);
+            subject.Attach(observer3);
+
+            Console.WriteLine("Setting state to 'First State'");
+            subject.State = "First State";
+
+            Console.WriteLine("\nDetaching Observer 2");
+            subject.Detach(observer2);
+
+            Console.WriteLine("\nSetting state to 'Second State'");
+            subject.State = "Second State";
         }
 
         private static void DemonstrateState()
         {
             Console.WriteLine("\n7. State Pattern:");
-            // Add your State demonstration here
+            DesignPatternsV1.Behavioral.State.Context context = new DesignPatternsV1.Behavioral.State.Context(new ConcreteStateA());
+
+            // The context will automatically transition between states
+            // as each state's Handle method is called
+            context.TransitionTo(new ConcreteStateA());
         }
 
         private static void DemonstrateStrategy()
         {
             Console.WriteLine("\n8. Strategy Pattern:");
-            // Add your Strategy demonstration here
+            var context = new DesignPatternsV1.Behavioral.Strategy.Context(new ConcreteStrategyA());
+            var data = new List<string> { "a", "b", "c", "d", "e" };
+
+            Console.WriteLine("Client: Strategy is set to normal sorting.");
+            var result = context.ExecuteStrategy(data);
+            Console.WriteLine(string.Join(", ", (List<string>)result));
+
+            Console.WriteLine("\nClient: Strategy is set to reverse sorting.");
+            context.SetStrategy(new ConcreteStrategyB());
+            result = context.ExecuteStrategy(data);
+            Console.WriteLine(string.Join(", ", (List<string>)result));
         }
 
         private static void DemonstrateTemplateMethod()
         {
             Console.WriteLine("\n9. Template Method Pattern:");
-            // Add your Template Method demonstration here
+            Console.WriteLine("Same client code can work with different subclasses:");
+
+            Console.WriteLine("\nClient: Testing ConcreteClass1...");
+            AbstractClass concreteClass1 = new ConcreteClass1();
+            concreteClass1.TemplateMethod();
+
+            Console.WriteLine("\nClient: Testing ConcreteClass2...");
+            AbstractClass concreteClass2 = new ConcreteClass2();
+            concreteClass2.TemplateMethod();
         }
 
         private static void DemonstrateVisitor()
         {
             Console.WriteLine("\n10. Visitor Pattern:");
-            // Add your Visitor demonstration here
+            List<DesignPatternsV1.Behavioral.Visitor.IComponent> components = new List<DesignPatternsV1.Behavioral.Visitor.IComponent>
+            {
+                new ConcreteComponentA(),
+                new ConcreteComponentB()
+            };
+
+            Console.WriteLine("The client code works with all visitors via the base Visitor interface:");
+            var visitor1 = new ConcreteVisitor1();
+            ClientCode(components, visitor1);
+
+            Console.WriteLine("\nIt allows the same client code to work with different types of visitors:");
+            var visitor2 = new ConcreteVisitor2();
+            ClientCode(components, visitor2);
+        }
+
+        private static void ClientCode(List<DesignPatternsV1.Behavioral.Visitor.IComponent> components, IVisitor visitor)
+        {
+            foreach (var component in components)
+            {
+                component.Accept(visitor);
+            }
         }
     }
 }
