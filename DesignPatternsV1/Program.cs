@@ -188,31 +188,75 @@ namespace DesignPatternsV1
         private static void DemonstrateFacade()
         {
             Console.WriteLine("\n5. Facade Pattern:");
-            // Add your Facade demonstration here
+            Subsystem1 subsystem1 = new Subsystem1();
+            Subsystem2 subsystem2 = new Subsystem2();
+            Facade facade = new Facade(subsystem1, subsystem2);
+            Console.WriteLine(facade.Operation());
         }
 
         private static void DemonstrateFlyweight()
         {
             Console.WriteLine("\n6. Flyweight Pattern:");
-            // Add your Flyweight demonstration here
+            var factory = new FlyweightFactory(new string[] { "Chevrolet", "Mercedes Benz", "BMW" });
+            factory.ListFlyweights();
+
+            var flyweight1 = factory.GetFlyweight("Chevrolet");
+            var flyweight2 = factory.GetFlyweight("BMW");
+            var flyweight3 = factory.GetFlyweight("BMW");
+
+            flyweight1.Operation("Camaro");
+            flyweight2.Operation("M5");
+            flyweight3.Operation("X6");
+
+            factory.ListFlyweights();
         }
 
         private static void DemonstrateProxy()
         {
             Console.WriteLine("\n7. Proxy Pattern:");
-            // Add your Proxy demonstration here
+            RealSubject realSubject = new RealSubject();
+            Proxy proxy = new Proxy(realSubject);
+            proxy.Request();
         }
 
         private static void DemonstrateChainOfResponsibility()
         {
             Console.WriteLine("\n1. Chain of Responsibility Pattern:");
-            // Add your Chain of Responsibility demonstration here
+            var monkey = new MonkeyHandler();
+            var squirrel = new SquirrelHandler();
+            var dog = new DogHandler();
+
+            monkey.SetNext(squirrel).SetNext(dog);
+
+            Console.WriteLine("Chain: Monkey > Squirrel > Dog\n");
+            ClientCode(monkey);
+        }
+
+        private static void ClientCode(IHandler handler)
+        {
+            foreach (var food in new List<string> { "Nut", "Banana", "Cup of coffee" })
+            {
+                Console.WriteLine($"Client: Who wants a {food}?");
+                var result = handler.Handle(food);
+                if (result != null)
+                {
+                    Console.Write($"   {result}");
+                }
+                else
+                {
+                    Console.WriteLine($"   {food} was left untouched.");
+                }
+            }
         }
 
         private static void DemonstrateCommand()
         {
             Console.WriteLine("\n2. Command Pattern:");
-            // Add your Command demonstration here
+            Invoker invoker = new Invoker();
+            invoker.SetOnStart(new SimpleCommand("Say Hi!"));
+            Receiver receiver = new Receiver();
+            invoker.SetOnFinish(new ComplexCommand(receiver, "Send email", "Save report"));
+            invoker.DoSomethingImportant();
         }
 
         private static void DemonstrateIterator()
